@@ -1,0 +1,9 @@
+{
+    $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+    extends: ['config:base', ':semanticCommits', ':automergeLinters', ':automergeTesters', ':automergeTypes'],
+
+    addLabels: ['dependencies'],
+    prConcurrentLimit: 5,
+    prCreation: 'not-pending',
+    rebaseStalePrs: true,
+}
