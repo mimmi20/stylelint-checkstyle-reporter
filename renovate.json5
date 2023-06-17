@@ -10,7 +10,7 @@
     ],
 
     addLabels: ['dependencies'],
-    automergeType: 'pr',
+    automergeType: 'branch',
     prConcurrentLimit: 5,
     rebaseWhen: 'behind-base-branch',
 }

@@ -7,9 +7,10 @@ on:
     push:
         branches:
             - main
+            - renovate/*
     pull_request:
-        branches:
-            - main
+        branches-ignore:
+            - renovate/*
 
 jobs:
     build:
