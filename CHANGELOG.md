@@ -1,3 +1,17 @@
+# [1.0.0](https://github.com/lucavb/stylelint-checkstyle-reporter/compare/v0.2.0...v1.0.0) (2024-01-27)
+
+
+* feat correctly support stylelint 16 ([61994b8](https://github.com/lucavb/stylelint-checkstyle-reporter/commit/61994b8cf497d69460820f133d0530d3fd4b20ee))
+
+
+### BREAKING CHANGES
+
+* The path for the formatter has been changed
+to node_modules/stylelint-checkstyle-reporter/dist/stylelint-checkstyle-reporter.mjs .
+The possibility of passing the output through stdin has also been added.
+Please refer to the README for further information on the
+updated usage.
+
 # Changelog
 
 ### 0.2.0
