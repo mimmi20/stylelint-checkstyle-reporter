@@ -8,65 +8,61 @@ import { F_OK } from 'constants';
 const DEFAULT_REPORT_FILE = 'test/temp/report.xml';
 
 const generateCommand = (formatter?: string, reportFile?: string) =>
-    `npx stylelint ./test/assets/*.scss --config test/config/.stylelintrc.json --custom-formatter ${
-        formatter ?? 'dist/stylelint-checkstyle-reporter.mjs'
-    } -o ${reportFile ?? DEFAULT_REPORT_FILE}`;
+  `npx stylelint ./test/assets/*.scss --config test/config/stylelint.config.mjs --custom-formatter ${formatter ?? 'dist/stylelint-checkstyle-reporter.mjs'} -o ${reportFile ?? DEFAULT_REPORT_FILE}`;
 
 describe('integration with stylelint', () => {
-    beforeAll(async () => {
-        await firstValueFrom(
-            from(fs.access('dist/stylelint-checkstyle-reporter.mjs', F_OK)).pipe(
-                timeout(3 * 1000),
-                catchError(() => {
-                    console.warn(
-                        "The file 'dist/stylelint-checkstyle-reporter.mjs' could not be found. Did you compile the project first?",
-                    );
-                    return of(undefined);
-                }),
-            ),
-        );
-    });
+  beforeAll(async () => {
+    await firstValueFrom(
+      from(fs.access('dist/stylelint-checkstyle-reporter.mjs', F_OK)).pipe(
+        timeout(3 * 1000),
+        catchError(() => {
+          console.warn("The file 'dist/stylelint-checkstyle-reporter.mjs' could not be found. Did you compile the project first?");
+          return of(undefined);
+        })
+      )
+    );
+  });
 
-    it('should produce an xml file', async () => {
-        const boundExec = bindCallback(exec);
-        const REPORT_FILE = DEFAULT_REPORT_FILE;
-        const command = generateCommand();
-        const xmlContent = await firstValueFrom(
-            from(fs.unlink(REPORT_FILE)).pipe(
-                catchError(() => of(null)),
-                switchMap(() => boundExec(command, {})),
-                switchMap((): Observable<Buffer> => from(fs.readFile(REPORT_FILE))),
-                map((buffer: Buffer): string => buffer.toString()),
-            ),
-        );
-        expect(xmlContent).toContain('<checkstyle');
-        expect(xmlContent).not.toContain('\n');
-        const f = () => convert(xmlContent, { format: 'object' });
-        expect(f).not.toThrow();
-    });
+  it('should produce an xml file', async () => {
+    const boundExec = bindCallback(exec);
+    const REPORT_FILE = DEFAULT_REPORT_FILE;
+    const command = generateCommand();
+    const xmlContent = await firstValueFrom(
+      from(fs.unlink(REPORT_FILE)).pipe(
+        catchError(() => of(null)),
+        switchMap(() => boundExec(command, {})),
+        switchMap((): Observable<Buffer> => from(fs.readFile(REPORT_FILE))),
+        map((buffer: Buffer): string => buffer.toString())
+      )
+    );
+    expect(xmlContent).toContain('<checkstyle');
+    expect(xmlContent).not.toContain('\n');
+    const f = () => convert(xmlContent, { format: 'object' });
+    expect(f).not.toThrow();
+  });
 
-    it('should generate linebreaks with pretty formatting', async () => {
-        const boundExec = bindCallback(exec);
-        const reportFile = 'test/temp/report_pretty.xml';
-        const command = generateCommand('examples/prettyprint.cjs', reportFile);
-        const xmlContent = await firstValueFrom(
-            from(fs.unlink(reportFile)).pipe(
-                catchError((): Observable<null> => of(null)),
-                switchMap((): Observable<unknown> => {
-                    return boundExec(command, {});
-                }),
-                switchMap((): Observable<Buffer> => from(fs.readFile(reportFile))),
-                map((buffer: Buffer): string => buffer.toString()),
-            ),
-        );
-        expect(xmlContent).toContain('<checkstyle');
-        expect(xmlContent).toContain('\n');
-        const f = () => convert(xmlContent, { format: 'object' });
-        expect(f).not.toThrow();
-    });
+  it('should generate linebreaks with pretty formatting', async () => {
+    const boundExec = bindCallback(exec);
+    const reportFile = 'test/temp/report_pretty.xml';
+    const command = generateCommand('examples/prettyprint.cjs', reportFile);
+    const xmlContent = await firstValueFrom(
+      from(fs.unlink(reportFile)).pipe(
+        catchError((): Observable<null> => of(null)),
+        switchMap((): Observable<unknown> => {
+          return boundExec(command, {});
+        }),
+        switchMap((): Observable<Buffer> => from(fs.readFile(reportFile))),
+        map((buffer: Buffer): string => buffer.toString())
+      )
+    );
+    expect(xmlContent).toContain('<checkstyle');
+    expect(xmlContent).toContain('\n');
+    const f = () => convert(xmlContent, { format: 'object' });
+    expect(f).not.toThrow();
+  });
 
-    it.each(['<<', 'not xml string'])('should not use a library that accepts wrong strings, %p', (notXML) => {
-        const f = () => convert(notXML, { format: 'object' });
-        expect(f).toThrow();
-    });
+  it.each(['<<', 'not xml string'])('should not use a library that accepts wrong strings, %p', (notXML) => {
+    const f = () => convert(notXML, { format: 'object' });
+    expect(f).toThrow();
+  });
 });
