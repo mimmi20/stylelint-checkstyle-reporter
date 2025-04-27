@@ -8,7 +8,7 @@ import { F_OK } from 'constants';
 const DEFAULT_REPORT_FILE = 'test/temp/report.xml';
 
 const generateCommand = (formatter?: string, reportFile?: string) =>
-  `npx stylelint ./test/assets/*.scss --config test/config/.stylelintrc.json --custom-formatter ${formatter ?? 'dist/stylelint-checkstyle-reporter.mjs'} -o ${reportFile ?? DEFAULT_REPORT_FILE}`;
+  `npx stylelint ./test/assets/*.scss --config test/config/stylelint.config.mjs --custom-formatter ${formatter ?? 'dist/stylelint-checkstyle-reporter.mjs'} -o ${reportFile ?? DEFAULT_REPORT_FILE}`;
 
 describe('integration with stylelint', () => {
   beforeAll(async () => {

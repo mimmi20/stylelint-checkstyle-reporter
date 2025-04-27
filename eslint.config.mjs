@@ -46,7 +46,7 @@ export default tseslint.config(
     },
   },
   {
-    files: ['src/**/*.{mjs,ts}', 'eslint.config.mjs', 'prettier.config.mjs', 'rollup.config.mjs', 'test/config/stylelint.config.mjs'],
+    files: ['src/**/*.{mjs,ts}', 'eslint.config.mjs', 'prettier.config.mjs', 'rollup.config.mjs', 'test/config/stylelint.config.mjs', 'jest.config.ts'],
     languageOptions: {
       sourceType: 'module',
     },

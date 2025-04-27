@@ -26,6 +26,7 @@ export default [
       file: 'dist/stylelint-checkstyle-reporter.cjs',
       format: 'cjs',
       sourcemap: true,
+      exports: 'named',
     },
     plugins: [typescript({ tsconfig: './tsconfig.app.json' }), terser()],
     external: [...dependencies, ...peerDependencies],
