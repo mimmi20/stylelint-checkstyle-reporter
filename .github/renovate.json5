@@ -1,7 +1,6 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-
-  "extends": [
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+  extends: [
     ":automergeBranch",
     ":automergeMinor",
     ":combinePatchMinorReleases",
@@ -24,39 +23,29 @@
     "security:openssf-scorecard",
     "mergeConfidence:all-badges",
     "replacements:all",
-    "config:base",
+    "config:recommended",
     ":semanticCommits",
     ":automergeLinters",
     ":automergeTesters",
-    ":automergeTypes"
+    ":automergeTypes",
   ],
-
-  "automergeType": "branch",
-  "commitBodyTable": true,
-  "configMigration": true,
-  "osvVulnerabilityAlerts": true,
-  "prBodyColumns": [
-    "Package",
-    "Change",
-    "Type",
-    "Update"
-  ],
-  "prBodyDefinitions": {
-    "Package": "`{{{depName}}}`",
-    "Type": "{{{depType}}}",
-    "Update": "{{{updateType}}}",
-    "Change": "[{{#if displayFrom}}`{{{displayFrom}}}` -> {{else}}{{#if currentValue}}`{{{currentValue}}}` -> {{/if}}{{/if}}{{#if displayTo}}`{{{displayTo}}}`{{else}}`{{{newValue}}}`{{/if}}]({{#if depName}}https://renovatebot.com/diffs/npm/{{replace '/' '%2f' depName}}/{{{currentVersion}}}/{{{newVersion}}}{{/if}})"
+  automergeType: "branch",
+  commitBodyTable: true,
+  configMigration: true,
+  osvVulnerabilityAlerts: true,
+  prBodyColumns: ["Package", "Change", "Type", "Update"],
+  prBodyDefinitions: {
+    Package: "`{{{depName}}}`",
+    Type: "{{{depType}}}",
+    Update: "{{{updateType}}}",
+    Change: "[{{#if displayFrom}}`{{{displayFrom}}}` -> {{else}}{{#if currentValue}}`{{{currentValue}}}` -> {{/if}}{{/if}}{{#if displayTo}}`{{{displayTo}}}`{{else}}`{{{newValue}}}`{{/if}}]({{#if depName}}https://renovatebot.com/diffs/npm/{{replace '/' '%2f' depName}}/{{{currentVersion}}}/{{{newVersion}}}{{/if}})",
   },
-  "prConcurrentLimit": 5,
-  "rangeStrategy": "widen",
-  "rebaseWhen": "behind-base-branch",
-  "recreateWhen": "never",
-  "rollbackPrs": true,
-  "vulnerabilityAlerts": {
-    "extends": [
-      ":automergeDisabled",
-      ":automergePr",
-      ":labels(security)"
-    ]
-  }
+  prConcurrentLimit: 5,
+  rangeStrategy: "widen",
+  rebaseWhen: "behind-base-branch",
+  recreateWhen: "never",
+  rollbackPrs: true,
+  vulnerabilityAlerts: {
+    extends: [":automergeDisabled", ":automergePr", ":labels(security)"],
+  },
 }
