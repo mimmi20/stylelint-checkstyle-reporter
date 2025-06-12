@@ -45,6 +45,9 @@
         "url": "https://sunbury.xyz"
     },
     "license": "MIT",
+    "engines": {
+        "node": ">=20"
+    },
     "files": [
         "dist",
         "index.js"
@@ -65,7 +68,7 @@
         "@rollup/plugin-typescript": "11.1.6",
         "@semantic-release/changelog": "6.0.3",
         "@semantic-release/git": "10.0.1",
-        "@types/node": "20.16.2",
+        "@types/node": "22.15.30",
         "eslint": "9.28.0",
         "jiti": "2.4.2",
         "prettier": "3.5.3",
