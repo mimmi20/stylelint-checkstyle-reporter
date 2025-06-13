@@ -32,7 +32,7 @@ describe('CheckstyleReport', () => {
         if (!Array.isArray(obj)) {
             expect(obj['checkstyle']).toBeTruthy();
         } else {
-            fail();
+            expect.fail();
         }
     });
 
@@ -56,12 +56,12 @@ describe('CheckstyleReport', () => {
             const checkstyleElement = parsed.checkstyle;
             expect(checkstyleElement).toBeTruthy();
             if (typeof checkstyleElement === 'string' || Array.isArray(checkstyleElement)) {
-                fail();
+                expect.fail();
             }
             expect(Array.isArray(checkstyleElement.file)).toBe(true);
             expect(checkstyleElement.file.length).toBe(3);
         } else {
-            fail();
+            expect.fail();
         }
     });
 
@@ -82,24 +82,22 @@ describe('CheckstyleReport', () => {
             const checkstyleElement = parsed.checkstyle;
             expect(checkstyleElement).toBeTruthy();
             if (typeof checkstyleElement === 'string' || Array.isArray(checkstyleElement)) {
-                fail();
+                expect.fail();
             }
             const file = checkstyleElement.file;
             if (Array.isArray(file) || typeof file === 'string') {
-                fail();
-                return;
+                expect.fail();
             }
             const error = file.error;
             if (Array.isArray(error) || typeof error === 'string') {
-                fail();
-                return;
+                expect.fail();
             }
             for (const [key, value] of Object.entries(checkstyleError)) {
                 expect(error[`@${key}`]).toBe(value.toString());
             }
             expect(Object.keys(error).length).toBe(Object.keys(checkstyleError).length);
         } else {
-            fail();
+            expect.fail();
         }
     });
 

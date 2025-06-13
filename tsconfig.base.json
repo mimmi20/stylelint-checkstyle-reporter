@@ -1,16 +1,18 @@
 {
     "compilerOptions": {
-        "target": "es6",
-        "module": "commonjs",
-        "strict": true,
+        "declaration": true,
         "esModuleInterop": true,
-        "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
-        "declaration": true
+        "module": "commonjs",
+        "skipLibCheck": true,
+        "strict": true,
+        "target": "es6"
     },
+    "files": [],
+    "include": [],
     "references": [
         {
-            "path": "./tsconfig.app.json"
+            "path": "./tsconfig.build.json"
         },
         {
             "path": "./tsconfig.spec.json"
