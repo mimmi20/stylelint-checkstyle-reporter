@@ -17,16 +17,18 @@
     "scripts": {
         "build": "rollup -c && npm run make-executable",
         "format": "prettier -w --ignore-unknown .",
-        "lint": "npm run lint:prettier && npm run lint:eslint",
-        "lint:eslint": "eslint .",
         "lint:eslint:fix": "eslint . --fix",
-        "lint:prettier": "prettier \"**/*\" --check --ignore-unknown",
+        "lint:eslint": "eslint .",
         "lint:prettier:fix": "prettier \"**/*\" --write --ignore-unknown",
+        "lint:prettier": "prettier \"**/*\" --check --ignore-unknown",
+        "lint:typecheck:watch": "tsc -p tsconfig.app.json --noEmit --watch",
+        "lint:typecheck": "tsc -p tsconfig.app.json --noEmit",
+        "lint": "npm run lint:prettier && npm run lint:eslint && npm run lint:typecheck",
         "make-executable": "./scripts/make-node-executable.sh ./dist/reporter-with-stdin.mjs",
         "prepack": "npm run build",
         "semantic-release": "semantic-release",
-        "test": "vitest run",
-        "test:watch": "vitest"
+        "test:watch": "vitest",
+        "test": "vitest run"
     },
     "repository": {
         "type": "git",
