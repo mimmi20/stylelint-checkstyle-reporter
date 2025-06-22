@@ -1,92 +1,92 @@
 {
-    "name": "stylelint-checkstyle-reporter",
-    "version": "1.0.0",
-    "description": "Output Checkstyle XML reports of stylelint results",
-    "exports": {
-        ".": {
-            "types": "./dist/src/index.d.ts",
-            "import": "./dist/stylelint-checkstyle-reporter.mjs",
-            "require": "./dist/stylelint-checkstyle-reporter.cjs"
-        },
-        "./package.json": "./package.json"
+  "name": "stylelint-checkstyle-reporter",
+  "version": "1.0.0",
+  "description": "Output Checkstyle XML reports of stylelint results",
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/stylelint-checkstyle-reporter.mjs",
+      "require": "./dist/stylelint-checkstyle-reporter.cjs"
     },
-    "types": "./dist/src/index.d.ts",
-    "bin": {
-        "stylelint-checkstyle-reporter": "dist/reporter-with-stdin.mjs"
-    },
-    "scripts": {
-        "build": "rollup -c && npm run make-executable",
-        "format": "prettier -w --ignore-unknown .",
-        "lint:eslint:fix": "eslint . --fix",
-        "lint:eslint": "eslint .",
-        "lint:prettier:fix": "prettier \"**/*\" --write --ignore-unknown",
-        "lint:prettier": "prettier \"**/*\" --check --ignore-unknown",
-        "lint:typecheck:watch": "tsc -p tsconfig.app.json --noEmit --watch",
-        "lint:typecheck": "tsc -p tsconfig.app.json --noEmit",
-        "lint": "npm run lint:prettier && npm run lint:eslint && npm run lint:typecheck",
-        "make-executable": "./scripts/make-node-executable.sh ./dist/reporter-with-stdin.mjs",
-        "prepack": "npm run build",
-        "semantic-release": "semantic-release",
-        "test:watch": "vitest",
-        "test": "vitest run"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+ssh://git@github.com/lucavb/stylelint-checkstyle-reporter.git"
-    },
-    "keywords": [
-        "stylelint",
-        "checkstyle",
-        "formatter",
-        "reporter",
-        "report"
-    ],
-    "author": {
-        "name": "Luca Becker",
-        "email": "luca.becker@sunbury.xyz",
-        "url": "https://sunbury.xyz"
-    },
-    "license": "MIT",
-    "engines": {
-        "node": ">=20"
-    },
-    "files": [
-        "dist",
-        "index.js"
-    ],
-    "bugs": {
-        "url": "https://github.com/lucavb/stylelint-checkstyle-reporter/issues"
-    },
-    "homepage": "https://github.com/lucavb/stylelint-checkstyle-reporter#readme",
-    "dependencies": {
-        "get-stdin": "^9.0.0",
-        "xmlbuilder2": "^3.1.1"
-    },
-    "devDependencies": {
-        "@commitlint/cli": "19.8.1",
-        "@commitlint/config-conventional": "19.8.1",
-        "@eslint/js": "9.29.0",
-        "@rollup/plugin-terser": "0.4.4",
-        "@rollup/plugin-typescript": "11.1.6",
-        "@semantic-release/changelog": "6.0.3",
-        "@semantic-release/commit-analyzer": "11.1.0",
-        "@semantic-release/git": "10.0.1",
-        "@semantic-release/github": "9.0.7",
-        "@semantic-release/npm": "11.0.0",
-        "@semantic-release/release-notes-generator": "12.1.0",
-        "@types/node": "22.15.30",
-        "eslint": "9.29.0",
-        "jiti": "2.4.2",
-        "prettier": "3.5.3",
-        "rollup": "4.43.0",
-        "rxjs": "7.8.2",
-        "semantic-release": "24.2.5",
-        "stylelint": "16.20.0",
-        "stylelint-config-recommended-scss": "15.0.1",
-        "stylelint-config-standard": "38.0.0",
-        "stylelint-scss": "6.12.1",
-        "typescript": "5.8.3",
-        "typescript-eslint": "8.34.1",
-        "vitest": "3.2.4"
-    }
+    "./package.json": "./package.json"
+  },
+  "types": "./dist/src/index.d.ts",
+  "bin": {
+    "stylelint-checkstyle-reporter": "dist/reporter-with-stdin.mjs"
+  },
+  "scripts": {
+    "build": "rollup -c && npm run make-executable",
+    "format": "prettier -w --ignore-unknown .",
+    "lint:eslint:fix": "eslint . --config eslint.config.mts --fix",
+    "lint:eslint": "eslint . --config eslint.config.mts",
+    "lint:prettier:fix": "prettier \"**/*\" --write --ignore-unknown",
+    "lint:prettier": "prettier \"**/*\" --check --ignore-unknown",
+    "lint:typecheck:watch": "tsc -p tsconfig.app.json --noEmit --watch",
+    "lint:typecheck": "tsc -p tsconfig.app.json --noEmit",
+    "lint": "npm run lint:prettier && npm run lint:eslint && npm run lint:typecheck",
+    "make-executable": "./scripts/make-node-executable.sh ./dist/reporter-with-stdin.mjs",
+    "prepack": "npm run build",
+    "semantic-release": "semantic-release",
+    "test:watch": "vitest",
+    "test": "vitest run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/lucavb/stylelint-checkstyle-reporter.git"
+  },
+  "keywords": [
+    "stylelint",
+    "checkstyle",
+    "formatter",
+    "reporter",
+    "report"
+  ],
+  "author": {
+    "name": "Luca Becker",
+    "email": "luca.becker@sunbury.xyz",
+    "url": "https://sunbury.xyz"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "dist",
+    "index.js"
+  ],
+  "bugs": {
+    "url": "https://github.com/lucavb/stylelint-checkstyle-reporter/issues"
+  },
+  "homepage": "https://github.com/lucavb/stylelint-checkstyle-reporter#readme",
+  "dependencies": {
+    "get-stdin": "^9.0.0",
+    "xmlbuilder2": "^3.1.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "19.8.1",
+    "@commitlint/config-conventional": "19.8.1",
+    "@eslint/js": "9.29.0",
+    "@rollup/plugin-terser": "0.4.4",
+    "@rollup/plugin-typescript": "11.1.6",
+    "@semantic-release/changelog": "6.0.3",
+    "@semantic-release/commit-analyzer": "11.1.0",
+    "@semantic-release/git": "10.0.1",
+    "@semantic-release/github": "9.0.7",
+    "@semantic-release/npm": "11.0.0",
+    "@semantic-release/release-notes-generator": "12.1.0",
+    "@types/node": "22.15.30",
+    "eslint": "9.29.0",
+    "jiti": "2.4.2",
+    "prettier": "3.5.3",
+    "rollup": "4.43.0",
+    "rxjs": "7.8.2",
+    "semantic-release": "24.2.5",
+    "stylelint": "16.20.0",
+    "stylelint-config-recommended-scss": "15.0.1",
+    "stylelint-config-standard": "38.0.0",
+    "stylelint-scss": "6.12.1",
+    "typescript": "5.8.3",
+    "typescript-eslint": "8.34.1",
+    "vitest": "3.2.4"
+  }
 }

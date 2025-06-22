@@ -2,8 +2,8 @@
 const { stylelintToCheckstyle } = require('../dist/stylelint-checkstyle-reporter.cjs');
 
 module.exports = function (results) {
-    return stylelintToCheckstyle(results, undefined, {
-        prettyPrint: true,
-        indent: ' '.repeat(4),
-    });
+  return stylelintToCheckstyle(results, undefined, {
+    prettyPrint: true,
+    indent: ' '.repeat(4),
+  });
 };
