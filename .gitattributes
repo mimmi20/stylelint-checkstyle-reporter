@@ -1,2 +1,62 @@
+
+
+# Javascript & Typescript
+*.js             text eol=lf
+*.ts             text eol=lf
+*.cjs            text eol=lf
+*.cts            text eol=lf
+*.mjs            text eol=lf
+*.mts            text eol=lf
+
+# CSS & SCSS
+*.css            text eol=lf
+*.scss           text eol=lf
+
+# Json
+*.json           text eol=lf
+*.json5          text eol=lf
+
+# Markdown
+*.markdown       text eol=lf
+*.md             text eol=lf
+
+# Yaml
+*.yml            text eol=lf
+*.yaml           text eol=lf
+
+# other
+*.xml            text eol=lf
+*.txt            text eol=lf
+*.ini            text eol=lf
+*.sh             text eol=lf
+*.stub           text eol=lf
+*.tmp            text eol=lf
+*.dist           text eol=lf
+*.lock           text eol=lf
+*.html           text eol=lf
+*.phtml          text eol=lf
+*.php            text eol=lf
+
+# Denote all files that are truly binary and should not be modified.
+*.gpg            -text binary
+*.gpg~           -text binary
+*.asc            -text binary
+*.png            -text binary
+*.jpg            -text binary
+*.gif            -text binary
+*.pdf            -text binary
+*.ico            -text binary
+*.odt            -text binary
+*.eot            -text binary
+*.ttf            -text binary
+*.woff           -text binary
+*.woff2          -text binary
+*.swf            -text binary
+*.mp4            -text binary
+*.ogv            -text binary
+*.webm           -text binary
+*.exe            -text binary
+*.zip            -text binary
+
 /test    export-ignore
 /.github export-ignore

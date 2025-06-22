@@ -1,16 +1,16 @@
 # https://help.github.com/en/categories/automating-your-workflow-with-github-actions
 
-name: "Lock closed issue"
+name: 'Lock closed issue'
 
 on:
   issues:
     types:
-      - "closed"
+      - 'closed'
 
 jobs:
   lock:
-    runs-on: "ubuntu-latest"
+    runs-on: 'ubuntu-latest'
     steps:
-      - uses: "Dunning-Kruger/lock-issues@v1.1"
+      - uses: 'Dunning-Kruger/lock-issues@v1.1'
         with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          repo-token: '${{ secrets.GITHUB_TOKEN }}'
