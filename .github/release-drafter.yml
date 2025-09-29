@@ -1,0 +1,85 @@
+---
+# file-version: 1.0
+
+template: |
+  ## What’s Changed
+
+  $CHANGES
+
+  ## 👨🏼‍💻 Contributors
+
+  $CONTRIBUTORS
+
+change-template: '- $TITLE by @$AUTHOR (#$NUMBER)'
+change-title-escapes: '\<*_&#@`' # You can add # and @ to disable mentions, and add ` to disable code blocks.
+no-changes-template: '- No changes'
+name-template: '$RESOLVED_VERSION'
+tag-template: '$RESOLVED_VERSION'
+version-template: '$MAJOR.$MINOR.$PATCH'
+
+exclude-labels:
+  - 'duplicate'
+  - 'question'
+  - 'invalid'
+  - 'wontfix'
+
+version-resolver:
+  major:
+    labels:
+      - 'bc break'
+      - 'removed'
+  minor:
+    labels:
+      - 'deprecated'
+      - 'security'
+  patch:
+    labels:
+      - 'bug'
+      - 'dependencies'
+      - 'enhancement'
+      - 'maintenance'
+      - 'documentation'
+  default: patch
+
+autolabeler:
+  - label: 'documentation'
+    files:
+      - '*.md'
+
+categories:
+  - title: '**💥 Breaking:**'
+    labels:
+      - 'bc break'
+  - title: '**🍰 Enhancements:**'
+    labels:
+      - 'enhancement'
+  - title: '**🐞 Bugs:**'
+    labels:
+      - 'bug'
+  - title: '**💀 Deprecated:**'
+    labels:
+      - 'deprecated'
+  - title: '**🗑 Removed:**'
+    labels:
+      - 'removed'
+  - title: '**🛡 Security:**'
+    labels:
+      - 'security'
+  - title: '**🕸 Dependencies:**'
+    labels:
+      - 'dependencies'
+  - title: '**🧹 Maintenance:**'
+    labels:
+      - 'maintenance'
+  - title: '**📦 Documentation:**'
+    labels:
+      - 'documentation'
+  # other Labels
+  #- title: "**📦 new Useragents:**"
+  #  labels:
+  #    - "new useragents"
+
+commitish: master
+target_commitish: master
+filter-by-commitish: true
+include-pre-releases: true
