@@ -1,9 +1,9 @@
 # new Issue
 
-| Q               | A          |
-|-----------------|------------|
-| project version | x.y.z      |
-| PHP version     | x.y.z      |
+| Q               | A     |
+| --------------- | ----- |
+| project version | x.y.z |
+| PHP version     | x.y.z |
 
 <!--
 - Please fill in this template according to your issue.
@@ -20,8 +20,8 @@
 
 ## Expected Result
 
-*
+-
 
 ## Actual Result
 
-*
+-
